@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Evaluator</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5); /* Set opacity to 0.5 */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body background="bg.jpg" style="background-size: contain;">
+  <div class="container">
+    <h2>STUDENT PERFORMANCE EVALUATOR</h2>
+    <form id="performanceForm">
+      <label for="">Name</label>
+      <input type="text"><br><br>
+        <label for="ga">Group Activities (GA):</label>
+        <input type="number" id="ga" name="ga" min="0" max="10" required><br><br>
+        
+        <label for="ia">Individual Activity (IA):</label>
+        <input type="number" id="ia" name="ia" min="0" max="10" required><br><br>
+        
+        <label for="aq">Answered Questions (AQ):</label>
+        <input type="number" id="aq" name="aq" min="0" max="10" required><br><br>
+        
+        <label for="ps">Project Submissions (PS):</label>
+        <input type="number" id="ps" name="ps" min="0" max="10" required><br><br>
+       
+        <label for="l">Listening (L):</label>
+        <input type="number" id="l" name="l" min="0" max="10" required><br><br>
+       
+        <label for="rp">Role Playing (RP):</label>
+        <input type="number" id="rp" name="rp" min="0" max="10" required><br><br>
+       
+        <label for="d">Discussion (D):</label>
+        <input type="number" id="d" name="d" min="0" max="10" required><br><br>
+     
+        <label for="ppt">Paper and Pencil Test (PPT):</label>
+        <input type="number" id="ppt" name="ppt" min="0" max="10" required><br><br>
+     
+        <label for="mp">Micro Project (MP):</label>
+        <input type="number" id="mp" name="mp" min="0" max="10" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="result"></div>
+
+    </div>
+
+    <script>
+        document.getElementById('performanceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var ga = parseInt(document.getElementById('ga').value);
+            var ia = parseInt(document.getElementById('ia').value);
+            var aq = parseInt(document.getElementById('aq').value);
+            var ps = parseInt(document.getElementById('ps').value);
+            var l = parseInt(document.getElementById('l').value);
+            var rp = parseInt(document.getElementById('rp').value);
+            var d = parseInt(document.getElementById('d').value);
+            var ppt = parseInt(document.getElementById('ppt').value);
+            var mp = parseInt(document.getElementById('mp').value);
+            var result = document.getElementById('result');
+
+            var totalScore = ga + ia + aq + ps + l + rp + d + ppt + mp;
+
+            var resultElement = document.getElementById('result');
+            resultElement.innerHTML = "Total Score: " + totalScore + "<br>";
+            
+            if (totalScore < 50) {
+              result.innerHTML = "Result: Failed";
+            } else {
+              result.innerHTML = "Result: Passed";
+            }
+        });
+    </script>
+</body>
+</html>
